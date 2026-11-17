@@ -61,7 +61,7 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(15, 13, 11, 0.85);
+      background: rgba(15, 13, 11, 0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
       transition: all 0.3s ease;
@@ -491,36 +491,255 @@
       margin: 0 auto 36px;
     }
 
-    /* Footer */
+    /* Footer & Legal Ironclad Defense */
     footer {
       border-top: 1px solid var(--border-color);
-      padding: 48px 0;
-      background: #0b0908;
-      color: #7a7266;
-      font-size: 0.9rem;
+      padding: 60px 0 40px;
+      background: #090807;
+      color: #8c8273;
+      font-size: 0.88rem;
+      line-height: 1.65;
     }
 
-    .footer-content {
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(212, 163, 115, 0.12);
+      margin-bottom: 32px;
+    }
+
+    .footer-brand {
+      max-width: 420px;
+    }
+
+    .footer-brand .logo-f {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .footer-brand .logo-f img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-legal-links button {
+      background: none;
+      border: none;
+      color: var(--primary-amber);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-family: inherit;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .footer-legal-links button:hover {
+      background: rgba(212, 163, 115, 0.15);
+      color: var(--primary-gold);
+    }
+
+    /* Business & Compliance Info Box */
+    .business-info-box {
+      background: rgba(24, 21, 18, 0.5);
+      border: 1px solid rgba(212, 163, 115, 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+      font-size: 0.83rem;
+      color: #8c8273;
+    }
+
+    .business-info-title {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .business-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 10px 24px;
+      margin-bottom: 16px;
+    }
+
+    .business-info-grid span {
+      display: block;
+    }
+
+    .business-info-grid strong {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .legal-disclaimer-text {
+      border-top: 1px solid rgba(212, 163, 115, 0.1);
+      padding-top: 14px;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: #756d61;
+    }
+
+    .legal-disclaimer-text strong {
+      color: var(--primary-amber);
+    }
+
+    .footer-bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 16px;
+      font-size: 0.82rem;
+      color: #635b50;
     }
 
-    .footer-left {
+    /* Modal System */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #191613;
+      border: 1px solid var(--primary-amber);
+      border-radius: 20px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      animation: modalFadeIn 0.25s ease-out;
     }
 
-    .footer-right a {
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-gold);
+    }
+
+    .btn-modal-close {
+      background: none;
+      border: none;
       color: var(--text-muted);
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
       transition: color 0.2s;
     }
 
-    .footer-right a:hover {
+    .btn-modal-close:hover {
+      color: var(--text-main);
+    }
+
+    .modal-body {
+      padding: 28px;
+      overflow-y: auto;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #d1c8be;
+    }
+
+    .modal-body h4 {
       color: var(--primary-amber);
+      margin: 20px 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .modal-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .modal-body p {
+      margin-bottom: 12px;
+    }
+
+    .modal-body ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    .modal-body li {
+      margin-bottom: 6px;
+    }
+
+    .modal-footer {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-modal-ok {
+      padding: 8px 24px;
+      background: var(--primary-amber);
+      color: #12100e;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-modal-ok:hover {
+      background: var(--primary-gold);
     }
 
     /* Responsive */
@@ -537,6 +756,10 @@
       }
       .nav-links {
         display: none;
+      }
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -771,19 +994,166 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer & Legal Defense Section -->
   <footer>
-    <div class="container footer-content">
-      <div class="footer-left">
-        <strong>마이 카페 뮤직 (My Cafe Music)</strong>
-        <span>Developer: milemilesmile | Package: com.milemilesmile.mycafemuse</span>
-        <span>© 2026 My Cafe Music. All rights reserved.</span>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-f">
+            <img src="./assets/images/icon.png" alt="My Cafe Music Icon">
+            <span>마이 카페 뮤직 (My Cafe Music)</span>
+          </div>
+          <p>공간의 감성을 완성하는 카페·매장 전용 프리미엄 BGM 스트리밍 서비스입니다.</p>
+        </div>
+        <div class="footer-legal-links">
+          <button type="button" onclick="openModal('privacyModal')">개인정보처리방침</button>
+          <button type="button" onclick="openModal('termsModal')">서비스 이용약관</button>
+          <button type="button" onclick="openModal('disclaimerModal')">법적 면책 및 저작권 고지</button>
+        </div>
       </div>
-      <div class="footer-right">
-        <a href="https://play.google.com/store/apps/details?id=com.milemilesmile.mycafemuse" target="_blank">Google Play Store 바로가기 →</a>
+
+      <!-- Business & Compliance Box -->
+      <div class="business-info-box">
+        <div class="business-info-title">
+          <span>⚖️ 서비스 사업자 정보 및 법적 안내</span>
+        </div>
+        <div class="business-info-grid">
+          <span><strong>서비스명:</strong> 마이 카페 뮤직 (My Cafe Music)</span>
+          <span><strong>개발·운영:</strong> milemilesmile</span>
+          <span><strong>패키지명:</strong> com.milemilesmile.mycafemuse</span>
+          <span><strong>고객지원 / 제휴:</strong> axlose2024@gmail.com</span>
+          <span><strong>권리침해·저작권 신고:</strong> axlose2024@gmail.com (Notice & Takedown)</span>
+          <span><strong>결제 및 정산:</strong> Google Commerce Limited (Google Play In-App Billing)</span>
+        </div>
+        <div class="legal-disclaimer-text">
+          • <strong>[웹사이트 면책]</strong> 본 웹사이트는 서비스 소개 및 정보 제공만을 목적으로 하며, 직접적인 회원가입, 신용카드 결제 및 개인정보 수집을 수행하지 않습니다.<br>
+          • <strong>[결제 및 환불 정책]</strong> 앱 내 모든 유료 구독 결제 및 환불, 청약철회는 Google Play의 결제 시스템 및 관련 운영 정책에 따라 안전하게 처리됩니다.<br>
+          • <strong>[저작권 및 지식재산권 보호]</strong> 서비스 내 제공되는 모든 음원과 그래픽 콘텐츠는 관련 법령에 따라 정당하게 권리를 확보한 자산입니다. 무단 추출, 복제, 상업적 재배포 및 2차 가공을 엄격히 금지합니다.<br>
+          • <strong>[권리침해 신고 창구]</strong> 저작권 또는 지식재산권 침해에 관한 문의는 즉시 공식 이메일(axlose2024@gmail.com)로 접수해 주시면 관계 법령에 따라 지체 없이 성실히 검토 후 조치합니다.
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 My Cafe Music (milemilesmile). All rights reserved.</span>
+        <span>Google Play 및 Google Play 로고는 Google LLC의 상표입니다.</span>
       </div>
     </div>
   </footer>
+
+  <!-- Modal 1: Privacy Policy -->
+  <div id="privacyModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>개인정보 처리방침</h3>
+        <button class="btn-modal-close" onclick="closeModal('privacyModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. 개요 및 수집 범위</h4>
+        <p>My Cafe Music 운영자(이하 "운영자")는 이용자의 개인정보를 매우 소중하게 생각합니다. 본 소개 웹사이트는 어떠한 개인정보나 쿠키도 직접 수집·저장하지 않습니다.</p>
+        <p>앱 서비스 이용 시 처리되는 정보는 아래와 같습니다:</p>
+        <ul>
+          <li><strong>기기 정보:</strong> OS 버전, 앱 버전, 기기 모델명, 언어 설정 등 서비스 안정성을 위한 정보</li>
+          <li><strong>이용 기록:</strong> 재생 상태, 접속 시점, 오류 로그 등 품질 개선을 위한 기술 정보</li>
+          <li><strong>결제 관련:</strong> Google Play 구매 토큰 및 구독 활성 상태 (신용카드 번호 등 결제 원천정보는 Google Play에서만 안전하게 처리되며 운영자는 일체 보관하지 않습니다)</li>
+        </ul>
+        <h4>2. 정보의 이용 목적 및 파기</h4>
+        <p>수집된 기술 정보는 오직 비정상적 접근 차단, 스트리밍 세션 유지, 앱 안정화 목적으로만 사용되며 법정 보유기간 경과 시 지체 없이 안전하게 파기됩니다.</p>
+        <h4>3. 개인정보 보호책임자 및 문의처</h4>
+        <p>개인정보 관련 문의는 공식 이메일(<strong>axlose2024@gmail.com</strong>)로 연락 주시면 신속하게 답변드리겠습니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-ok" onclick="closeModal('privacyModal')">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Terms of Service -->
+  <div id="termsModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>서비스 이용약관</h3>
+        <button class="btn-modal-close" onclick="closeModal('termsModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>제1조 (목적)</h4>
+        <p>본 약관은 My Cafe Music(이하 "서비스")의 이용과 관련하여 운영자와 이용자 간의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+        <h4>제2조 (서비스 개요 및 구독 정책)</h4>
+        <ul>
+          <li>My Cafe Music은 카페 및 매장 환경에 최적화된 배경음악 스트리밍 및 클로징 BGM을 제공하는 서비스입니다.</li>
+          <li>유료 구독 결제는 전적으로 Google Play 인앱결제 시스템을 통해 처리되며, 1개 구독은 1개 매장 좌석(Seat)에 적용됩니다.</li>
+          <li>구독 해지, 갱신 및 환불은 Google Play 정책 및 전자상거래 등에서의 소비자보호에 관한 법률 등 관련 법령에 따릅니다.</li>
+        </ul>
+        <h4>제3조 (콘텐츠 이용 및 금지행위)</h4>
+        <p>서비스 내 제공되는 음원은 정상적인 매장 배경음악 재생 용도로만 허용됩니다. 음원의 무단 복제, 녹음, 파일 추출(리핑), 제3자 판매 및 2차 저작물 제작 행위는 엄격히 금지됩니다.</p>
+        <h4>제4조 (면책 조항)</h4>
+        <p>운영자는 천재지변, 기간통신사업자의 회선 장애, Google Play 플랫폼의 시스템 점검 등 불가항력적 사유로 인한 서비스 일시 중단에 대해 법적 책임을 지지 않습니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-ok" onclick="closeModal('termsModal')">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Legal & Copyright Disclaimer -->
+  <div id="disclaimerModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>법적 면책 및 저작권 침해 대응 고지</h3>
+        <button class="btn-modal-close" onclick="closeModal('disclaimerModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. 웹사이트의 법적 지위 및 전자상거래 면책</h4>
+        <p>본 웹사이트는 My Cafe Music 애플리케이션의 소개 및 기능 안내를 위한 홍보용 정적 웹페이지입니다. 사이트 내에서 이용자의 카드 결제나 개인정보 수집 행위가 일체 발생하지 않으므로, 전자상거래법상 통신판매 당사자가 아닙니다. 모든 결제 및 구독 계약은 Google Play 플랫폼 내에서 이용자와 결제 플랫폼 간에 성립합니다.</p>
+        <h4>2. 저작권 보호 및 침해 통지 절차 (Notice and Takedown)</h4>
+        <p>운영자는 저작권법 및 관련 지식재산권 법령을 엄격히 준수합니다. 본 서비스의 모든 콘텐츠는 적법한 절차와 라이선스에 따라 서비스되고 있습니다.</p>
+        <p>만약 본 서비스에서 제공하는 콘텐츠가 제3자의 저작권 또는 기타 권리를 침해한다고 판단되는 경우, 권리자께서는 다음 정보를 포함하여 공식 창구로 통지해 주시기 바랍니다:</p>
+        <ul>
+          <li>침해를 주장하는 저작물의 구체적 명칭 및 증빙 자료</li>
+          <li>침해 주장 콘텐츠의 구체적 위치 또는 곡명</li>
+          <li>권리자 본인 또는 대리인의 정당한 권한을 입증하는 서류 및 연락처</li>
+        </ul>
+        <p>• <strong>접수처: axlose2024@gmail.com</strong></p>
+        <p>통지가 정당하게 접수될 경우, 저작권법 제103조에 따라 즉각적인 복제·전송 중단 조치를 취하고 관계인에게 통보합니다.</p>
+        <h4>3. 상표 및 지식재산권</h4>
+        <p>Google Play 및 Google Play 로고는 Google LLC의 등록 상표입니다. 기타 본 사이트에 언급된 상표는 해당 소유자의 권리입니다.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-ok" onclick="closeModal('disclaimerModal')">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(function(overlay) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
