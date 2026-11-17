@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>마이 카페 뮤직 (My Cafe Music) - 공간의 온도를 바꾸는 감성 매장 BGM</title>
-  <meta name="description" content="저작권 걱정 없는 완벽한 카페 음악, 마이 카페 뮤직(My Cafe Music). 손님의 대화를 방해하지 않는 No-Vocal 피아노·재즈 큐레이션부터 마감 음악까지.">
+  <meta name="description" content="저작권 걱정 없는 완벽한 카페 음악, 마이 카페 뮤직(My Cafe Music). 브런치타임, 포커스뮤직 등 실제 1,400여 곡의 감성 테마 BGM.">
   <meta property="og:title" content="마이 카페 뮤직 (My Cafe Music) - 감성 매장 BGM">
   <meta property="og:description" content="저작권·광고 걱정 없는 카페 & 매장 전용 음악 스트리밍 앱. 지금 Google Play에서 다운로드하세요.">
   <meta property="og:image" content="./assets/images/hero.jpg">
@@ -270,7 +270,7 @@
 
     .section-header {
       text-align: center;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto 64px;
     }
 
@@ -345,40 +345,113 @@
       line-height: 1.6;
     }
 
-    /* Moods & Genres */
-    .genres-grid {
+    /* =======================================
+       STITCH GRID DESIGN (공간의 품격 큐레이션)
+       ======================================= */
+    .stitch-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
     }
 
-    .genre-card {
-      background: linear-gradient(180deg, #1b1713 0%, #14110e 100%);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 28px;
+    .stitch-card {
       position: relative;
+      background: linear-gradient(145deg, #1d1814 0%, #13100e 100%);
+      border: 1px solid rgba(212, 163, 115, 0.28);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
 
-    .genre-card .tag {
+    /* Leather Craft Stitch Line (바느질 스티치 디테일) */
+    .stitch-card::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      border: 1.5px dashed rgba(212, 163, 115, 0.32);
+      border-radius: 14px;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .stitch-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-amber);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(212, 163, 115, 0.25);
+    }
+
+    .stitch-card:hover::before {
+      border-color: var(--primary-gold);
+      box-shadow: inset 0 0 12px rgba(212, 163, 115, 0.15);
+    }
+
+    .stitch-card-image {
+      width: 100%;
+      height: 130px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      position: relative;
+      border: 1px solid rgba(212, 163, 115, 0.2);
+    }
+
+    .stitch-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .stitch-card:hover .stitch-card-image img {
+      transform: scale(1.08);
+    }
+
+    .stitch-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(15, 13, 11, 0.85);
+      border: 1px solid var(--border-color);
+      color: var(--primary-gold);
       font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      z-index: 3;
+    }
+
+    .stitch-card h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stitch-subtitle {
+      font-size: 0.82rem;
       color: var(--primary-amber);
       font-weight: 600;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .genre-card h4 {
-      font-size: 1.2rem;
-      font-weight: 700;
+      letter-spacing: 0.04em;
       margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
-    .genre-card p {
-      font-size: 0.9rem;
+    .stitch-card p {
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* Comparison Table */
@@ -491,7 +564,7 @@
       margin: 0 auto 36px;
     }
 
-    /* Footer: Clean & Professional Korean Standard */
+    /* Clean Professional Footer */
     footer {
       border-top: 1px solid var(--border-color);
       padding: 48px 0 36px;
@@ -717,7 +790,7 @@
       </a>
       <div class="nav-links">
         <a href="#features">주요 특징</a>
-        <a href="#genres">추천 사운드</a>
+        <a href="#vibes">사운드 테마</a>
         <a href="#spaces">활용 공간</a>
         <a href="#compare">비교 분석</a>
       </div>
@@ -737,7 +810,7 @@
         <h1>공간의 온도를 바꾸는 음악<br><span>마이 카페 뮤직</span></h1>
         <p>
           저작권 분쟁 걱정 NO, 시끄러운 중간 광고 ZERO.<br>
-          손님의 대화를 방해하지 않는 고품격 피아노·재즈 큐레이션부터 센스 있는 마감 음악까지, 매장의 감성을 완성하세요.
+          손님의 대화를 방해하지 않는 브런치타임, 포커스뮤직 등 1,400여 곡의 테마 선율과 센스 있는 마감 음악으로 매장의 감성을 완성하세요.
         </p>
         <div class="hero-actions">
           <a href="https://play.google.com/store/apps/details?id=com.milemilesmile.mycafemuse" target="_blank" class="btn-google-play">
@@ -795,35 +868,104 @@
     </div>
   </section>
 
-  <!-- Sound Collection / Moods -->
-  <section id="genres" style="background: rgba(24, 21, 18, 0.4);">
+  <!-- Sound Collection / Stitch Grid (실제 앱 7대 테마 + 마감 음악) -->
+  <section id="vibes" style="background: rgba(24, 21, 18, 0.4);">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Atmosphere & Mood</span>
-        <h2 class="section-title">공간의 품격을 완성하는 장르 큐레이션</h2>
-        <p class="section-desc">로맨틱 클래식부터 재즈까지, 시간대와 분위기에 맞는 최적의 선율을 들려드립니다.</p>
+        <span class="section-tag">Official Vibe Collection</span>
+        <h2 class="section-title">공간의 품격을 완성하는 7대 테마 큐레이션</h2>
+        <p class="section-desc">마이 카페 뮤직 앱에 탑재된 1,440여 곡의 실제 엄선 테마 사운드를 만나보세요.</p>
       </div>
-      <div class="genres-grid">
-        <div class="genre-card">
-          <span class="tag">40% Selection</span>
-          <h4>🎹 로맨틱 클래식 피아노</h4>
-          <p>쇼팽의 녹턴, 드뷔시의 아라베스크 감성. 유려한 선율과 일정한 템포로 고급스러운 공간감을 연출합니다.</p>
+      <div class="stitch-grid">
+
+        <!-- 1. Brunch Time -->
+        <div class="stitch-card">
+          <div class="stitch-card-image">
+            <span class="stitch-tag">206곡 수록</span>
+            <img src="./assets/images/vibe_1.webp" alt="Brunch Time 앨범 아트">
+          </div>
+          <h4>🍳 Brunch Time</h4>
+          <span class="stitch-subtitle">Classic Piano Solo</span>
+          <p>따스한 아침 햇살과 갓 내린 커피 향에 어울리는 우아한 클래식 피아노 솔로. 여유로운 브런치 공간을 연출합니다.</p>
         </div>
-        <div class="genre-card">
-          <span class="tag">30% Selection</span>
-          <h4>🎷 스무스 재즈 트리오</h4>
-          <p>피아노, 콘트라베이스, 브러시 드럼의 부드러운 스윙. 비 오는 날이나 늦은 오후, 차분한 휴식을 선사합니다.</p>
+
+        <!-- 2. Focus Mode -->
+        <div class="stitch-card">
+          <div class="stitch-card-image">
+            <span class="stitch-tag">209곡 수록</span>
+            <img src="./assets/images/vibe_2.webp" alt="Focus Mode 앨범 아트">
+          </div>
+          <h4>🎧 Focus Mode</h4>
+          <span class="stitch-subtitle">Calm Strings & Deep Focus</span>
+          <p>업무, 공부, 독서 시 잡음을 부드럽게 지워주는 차분한 현악 선율. 손님의 깊은 몰입과 편안한 대화를 돕습니다.</p>
         </div>
-        <div class="genre-card">
-          <span class="tag">20% Selection</span>
-          <h4>🎸 어쿠스틱 핑거스타일</h4>
-          <p>따스한 햇살 같은 어쿠스틱 기타 선율. 우드톤의 아늑한 개인 카페와 베이커리에 완벽하게 어울립니다.</p>
+
+        <!-- 3. Rainy Day -->
+        <div class="stitch-card">
+          <div class="stitch-card-image">
+            <span class="stitch-tag">207곡 수록</span>
+            <img src="./assets/images/vibe_3.webp" alt="Rainy Day 앨범 아트">
+          </div>
+          <h4>🌧️ Rainy Day</h4>
+          <span class="stitch-subtitle">Mellow Cello & Piano</span>
+          <p>창밖으로 흐르는 빗소리와 감미롭게 어우러지는 깊은 첼로 & 피아노 앙상블. 비 오는 날 최고의 무드를 선물합니다.</p>
         </div>
-        <div class="genre-card">
-          <span class="tag">10% Selection</span>
-          <h4>☕ 릴랙싱 앰비언트</h4>
-          <p>소음을 은은하게 덮어주는 정갈한 백색 사운드. 집중과 대화에 편안한 안락함을 더해줍니다.</p>
+
+        <!-- 4. Hip Evening -->
+        <div class="stitch-card">
+          <div class="stitch-card-image">
+            <span class="stitch-tag">201곡 수록</span>
+            <img src="./assets/images/vibe_4.webp" alt="Hip Evening 앨범 아트">
+          </div>
+          <h4>🍷 Hip Evening</h4>
+          <span class="stitch-subtitle">Modern Classic & Jazz</span>
+          <p>노을 지는 저녁, 세련된 카페와 와인바, 다이닝 공간의 감도를 한 단계 끌어올리는 감각적인 모던 클래식 & 재즈 선율.</p>
         </div>
+
+        <!-- 5. Sunny Weekend -->
+        <div class="stitch-card">
+          <div class="stitch-card-image">
+            <span class="stitch-tag">209곡 수록</span>
+            <img src="./assets/images/vibe_5.webp" alt="Sunny Weekend 앨범 아트">
+          </div>
+          <h4>🌞 Sunny Weekend</h4>
+          <span class="stitch-subtitle">Bright Sonata</span>
+          <p>생기 넘치는 주말 오후, 경쾌하고 밝은 소나타 선율로 매장에 기분 좋은 설렘과 활기찬 에너지를 채워줍니다.</p>
+        </div>
+
+        <!-- 6. Cozy Night -->
+        <div class="stitch-card">
+          <div class="stitch-card-image">
+            <span class="stitch-tag">206곡 수록</span>
+            <img src="./assets/images/vibe_6.webp" alt="Cozy Night 앨범 아트">
+          </div>
+          <h4>🎹 Cozy Night</h4>
+          <span class="stitch-subtitle">Midnight Nocturne</span>
+          <p>하루를 정리하는 늦은 밤, 은은한 조명 아래 피로를 따스하게 녹여주는 감미롭고 서정적인 미드나잇 녹턴.</p>
+        </div>
+
+        <!-- 7. Kpop Style -->
+        <div class="stitch-card">
+          <div class="stitch-card-image">
+            <span class="stitch-tag">207곡 수록</span>
+            <img src="./assets/images/vibe_kpop.webp" alt="Kpop Style 앨범 아트">
+          </div>
+          <h4>✨ K-Pop Style</h4>
+          <span class="stitch-subtitle">Trendy Pop Instrumental</span>
+          <p>친숙하고 트렌디한 K-Pop 감성을 고급스러운 어쿠스틱 & 피아노 연주곡으로 재해석하여 남녀노소 편안히 즐깁니다.</p>
+        </div>
+
+        <!-- 8. Closing Music -->
+        <div class="stitch-card">
+          <div class="stitch-card-image" style="background: #1e1914; display: flex; align-items: center; justify-content: center;">
+            <span class="stitch-tag">매장 마감 전용</span>
+            <div style="font-size: 3rem; text-align: center;">🌙</div>
+          </div>
+          <h4>🚪 Closing Music</h4>
+          <span class="stitch-subtitle">Sensible Outro BGM</span>
+          <p>영업 종료 전, 손님에게 부담을 주지 않고 자연스럽게 마감 시간을 알리는 마이 카페 뮤직만의 감성 클로징 BGM 기능.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -936,7 +1078,7 @@
     </div>
   </div>
 
-  <!-- Clean Professional Footer -->
+  <!-- Clean Professional Footer with User Business Number -->
   <footer>
     <div class="container">
       <div class="footer-links">
@@ -951,7 +1093,7 @@
           <span class="sep">|</span>
           <span><strong>대표자명:</strong> 김경진</span>
           <span class="sep">|</span>
-          <span><strong>사업자등록번호:</strong> 000-00-00000</span>
+          <span><strong>사업자등록번호:</strong> 882-10-03000</span>
         </div>
         <div class="info-row">
           <span><strong>고객지원 / 제휴 문의:</strong> axlose2024@gmail.com</span>
