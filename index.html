@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이 카페 뮤직 (My Cafe Music) - 공간의 온도를 바꾸는 감성 매장 BGM</title>
+  <meta name="description" content="저작권 걱정 없는 완벽한 카페 음악, 마이 카페 뮤직(My Cafe Music). 손님의 대화를 방해하지 않는 No-Vocal 피아노·재즈 큐레이션부터 마감 음악까지.">
+  <meta property="og:title" content="마이 카페 뮤직 (My Cafe Music) - 감성 매장 BGM">
+  <meta property="og:description" content="저작권·광고 걱정 없는 카페 & 매장 전용 음악 스트리밍 앱. 지금 Google Play에서 다운로드하세요.">
+  <meta property="og:image" content="./assets/images/hero.jpg">
+  <meta property="og:url" content="https://play.google.com/store/apps/details?id=com.milemilesmile.mycafemuse">
+  <link rel="icon" href="./assets/images/icon.png" type="image/png">
+
+  <!-- Pretendard WebFont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #0f0d0b;
+      --bg-card: #181512;
+      --bg-card-hover: #221e1a;
+      --primary-amber: #d4a373;
+      --primary-gold: #e9c46a;
+      --accent-warm: #e76f51;
+      --text-main: #f8f6f0;
+      --text-muted: #a89f91;
+      --border-color: rgba(212, 163, 115, 0.2);
+      --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(15, 13, 11, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(212, 163, 115, 0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-amber);
+    }
+
+    .btn-download-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, var(--primary-amber), #b87d4b);
+      color: #12100e;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 30px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(212, 163, 115, 0.3);
+    }
+
+    .btn-download-sm:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 163, 115, 0.45);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 0 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 163, 115, 0.15) 0%, rgba(15, 13, 11, 0) 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(212, 163, 115, 0.12);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--primary-amber);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, var(--text-main) 30%, var(--primary-amber) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-google-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 28px;
+      background: #181512;
+      border: 1px solid rgba(212, 163, 115, 0.4);
+      border-radius: 12px;
+      color: var(--text-main);
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-google-play:hover {
+      background: #25201b;
+      border-color: var(--primary-amber);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(212, 163, 115, 0.25);
+    }
+
+    .btn-google-play svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .btn-google-play-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .btn-google-play-text .sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .btn-google-play-text .main {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-img-wrapper {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 163, 115, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 163, 115, 0.15);
+    }
+
+    .hero-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-img-wrapper:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Section Common */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 64px;
+    }
+
+    .section-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 32px 28px;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: rgba(212, 163, 115, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(212, 163, 115, 0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--primary-amber);
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Moods & Genres */
+    .genres-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .genre-card {
+      background: linear-gradient(180deg, #1b1713 0%, #14110e 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .genre-card .tag {
+      font-size: 0.75rem;
+      color: var(--primary-amber);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .genre-card h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .genre-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Comparison Table */
+    .table-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(212, 163, 115, 0.12);
+    }
+
+    th {
+      background: #1e1914;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-amber);
+    }
+
+    td {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-col {
+      background: rgba(212, 163, 115, 0.08);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    th.highlight-col {
+      background: rgba(212, 163, 115, 0.18);
+      color: var(--primary-gold);
+    }
+
+    /* Spaces / Use Cases */
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .space-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .space-box:hover {
+      border-color: var(--primary-amber);
+      transform: translateY(-4px);
+    }
+
+    .space-icon {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .space-box h4 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .space-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(180deg, #16120e 0%, #201a14 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 72px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 80px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-section p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 48px 0;
+      background: #0b0908;
+      color: #7a7266;
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-right a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-right a:hover {
+      color: var(--primary-amber);
+    }
+
+    /* Responsive */
+    @media (max-width: 868px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <img src="./assets/images/icon.png" alt="My Cafe Music Logo">
+        <span>My Cafe Music</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">주요 특징</a>
+        <a href="#genres">추천 사운드</a>
+        <a href="#spaces">활용 공간</a>
+        <a href="#compare">비교 분석</a>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=com.milemilesmile.mycafemuse" target="_blank" class="btn-download-sm">
+        <span>Google Play</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge">🎵 매장 & 카페 전용 프리미엄 BGM 스트리밍</div>
+        <h1>공간의 온도를 바꾸는 음악<br><span>마이 카페 뮤직</span></h1>
+        <p>
+          저작권 분쟁 걱정 NO, 시끄러운 중간 광고 ZERO.<br>
+          손님의 대화를 방해하지 않는 고품격 피아노·재즈 큐레이션부터 센스 있는 마감 음악까지, 매장의 감성을 완성하세요.
+        </p>
+        <div class="hero-actions">
+          <a href="https://play.google.com/store/apps/details?id=com.milemilesmile.mycafemuse" target="_blank" class="btn-google-play">
+            <svg viewBox="0 0 512 512">
+              <path fill="#4285F4" d="M32.5 44.5L257 269 32.5 493.5c-4.5-5-7.5-12-7.5-20.5v-408c0-8.5 3-15.5 7.5-20.5z"/>
+              <path fill="#34A853" d="M336 190L257 269l79 79 104-60c18-10 18-28 0-38l-104-60z"/>
+              <path fill="#FBBC05" d="M32.5 44.5C36 40.5 42 38 49 42l287 148-79 79L32.5 44.5z"/>
+              <path fill="#EA4335" d="M32.5 493.5l224.5-224.5 79 79L49 496c-7 4-13 1.5-16.5-2.5z"/>
+            </svg>
+            <div class="btn-google-play-text">
+              <span class="sub">GET IT ON</span>
+              <span class="main">Google Play</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-img-wrapper">
+          <img src="./assets/images/hero.jpg" alt="마이 카페 뮤직 BGM 플레이어 감성 카페 인테리어">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Key Features</span>
+        <h2 class="section-title">왜 '마이 카페 뮤직'이어야 할까요?</h2>
+        <p class="section-desc">매장 운영자와 손님 모두를 만족시키는 4가지 핵심 원칙을 지킵니다.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>저작권 분쟁 걱정 ZERO</h3>
+          <p>매장에서 상업용으로 음악을 틀 때 생기는 공연권료 및 저작권 침해 우려 없이 편안하고 안전하게 재생할 수 있습니다.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚫</div>
+          <h3>시끄러운 중간 광고 ZERO</h3>
+          <p>유튜브처럼 분위기를 깨는 시끄러운 음성 광고가 없습니다. 손님이 머무는 내내 차분하고 쾌적한 공간을 유지합니다.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎙️</div>
+          <h3>대화에 스며드는 No-Vocal</h3>
+          <p>가사 있는 보컬 곡과 과격한 템포(BPM 120+)를 배제하여 손님의 대화와 휴식, 직원의 업무 피로도를 방해하지 않습니다.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <h3>센스 있는 마감 클로징 BGM</h3>
+          <p>영업 마감 전, 손님에게 부담을 주지 않고 자연스럽게 마감을 알릴 수 있는 감성 클로징 음악 기능을 지원합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sound Collection / Moods -->
+  <section id="genres" style="background: rgba(24, 21, 18, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Atmosphere & Mood</span>
+        <h2 class="section-title">공간의 품격을 완성하는 장르 큐레이션</h2>
+        <p class="section-desc">로맨틱 클래식부터 재즈까지, 시간대와 분위기에 맞는 최적의 선율을 들려드립니다.</p>
+      </div>
+      <div class="genres-grid">
+        <div class="genre-card">
+          <span class="tag">40% Selection</span>
+          <h4>🎹 로맨틱 클래식 피아노</h4>
+          <p>쇼팽의 녹턴, 드뷔시의 아라베스크 감성. 유려한 선율과 일정한 템포로 고급스러운 공간감을 연출합니다.</p>
+        </div>
+        <div class="genre-card">
+          <span class="tag">30% Selection</span>
+          <h4>🎷 스무스 재즈 트리오</h4>
+          <p>피아노, 콘트라베이스, 브러시 드럼의 부드러운 스윙. 비 오는 날이나 늦은 오후, 차분한 휴식을 선사합니다.</p>
+        </div>
+        <div class="genre-card">
+          <span class="tag">20% Selection</span>
+          <h4>🎸 어쿠스틱 핑거스타일</h4>
+          <p>따스한 햇살 같은 어쿠스틱 기타 선율. 우드톤의 아늑한 개인 카페와 베이커리에 완벽하게 어울립니다.</p>
+        </div>
+        <div class="genre-card">
+          <span class="tag">10% Selection</span>
+          <h4>☕ 릴랙싱 앰비언트</h4>
+          <p>소음을 은은하게 덮어주는 정갈한 백색 사운드. 집중과 대화에 편안한 안락함을 더해줍니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="compare">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Comparison</span>
+        <h2 class="section-title">일반 음악 서비스와의 차이점</h2>
+        <p class="section-desc">매장 전용 솔루션과 일반 스트리밍을 한눈에 비교해 보세요.</p>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>일반 음원 스트리밍</th>
+              <th>유튜브 무료 플레이리스트</th>
+              <th class="highlight-col">My Cafe Music</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>저작권 안전성</strong></td>
+              <td>매장 평수에 따른 분쟁 우려</td>
+              <td>상업적 이용 저작권 불분명</td>
+              <td class="highlight-col">✅ 매장 재생 최적화 클린 음원</td>
+            </tr>
+            <tr>
+              <td><strong>광고 여부</strong></td>
+              <td>유료 구독 시에만 무광고</td>
+              <td>갑작스러운 음성 광고 노출</td>
+              <td class="highlight-col">✅ 중간 광고 완전 ZERO</td>
+            </tr>
+            <tr>
+              <td><strong>선곡 집중도</strong></td>
+              <td>가요/팝송 가사로 대화 방해</td>
+              <td>알고리즘으로 템포 급변</td>
+              <td class="highlight-col">✅ 가사 없는 잔잔한 전용 큐레이션</td>
+            </tr>
+            <tr>
+              <td><strong>선곡 피로도</strong></td>
+              <td>매일 플레이리스트 관리 필요</td>
+              <td>재생 종료 후 수동 탐색</td>
+              <td class="highlight-col">✅ 앱 켜고 원클릭 자동 스트리밍</td>
+            </tr>
+            <tr>
+              <td><strong>마감 음악 지원</strong></td>
+              <td>별도 지원 없음</td>
+              <td>직접 찾아서 변경 필요</td>
+              <td class="highlight-col">✅ 감성 클로징 BGM 자체 내장</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases / Spaces -->
+  <section id="spaces" style="background: rgba(24, 21, 18, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Where to Use</span>
+        <h2 class="section-title">이런 공간에서 사랑받고 있습니다</h2>
+        <p class="section-desc">작은 개인 매장부터 집중이 필요한 서재까지 모두 어울립니다.</p>
+      </div>
+      <div class="spaces-grid">
+        <div class="space-box">
+          <div class="space-icon">☕</div>
+          <h4>개인 카페 & 베이커리</h4>
+          <p>고급스러운 원목 인테리어와 커피 향에 녹아드는 잔잔한 피아노</p>
+        </div>
+        <div class="space-box">
+          <div class="space-icon">🍷</div>
+          <h4>레스토랑 & 와인바</h4>
+          <p>손님들의 대화를 한층 더 우아하게 만들어주는 감미로운 재즈</p>
+        </div>
+        <div class="space-box">
+          <div class="space-icon">💇</div>
+          <h4>헤어샵 & 네일·뷰티샵</h4>
+          <p>시술받는 고객에게 편안한 힐링과 휴식을 전하는 어쿠스틱 선율</p>
+        </div>
+        <div class="space-box">
+          <div class="space-icon">📖</div>
+          <h4>홈카페 & 서재·작업실</h4>
+          <p>재택근무 몰입과 독서, 공부할 때 집중력을 올려주는 백색음악</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Download Section -->
+  <div class="container">
+    <div class="cta-section">
+      <h2>당신의 매장에 특별한 감성을 더하세요</h2>
+      <p>오늘부터 매장 선곡 스트레스에서 벗어나세요. 스마트폰이나 매장 공기계 태블릿에 설치하고 원클릭으로 재생하면 끝!</p>
+      <a href="https://play.google.com/store/apps/details?id=com.milemilesmile.mycafemuse" target="_blank" class="btn-google-play" style="background: #0f0d0b; border-color: var(--primary-amber);">
+        <svg viewBox="0 0 512 512">
+          <path fill="#4285F4" d="M32.5 44.5L257 269 32.5 493.5c-4.5-5-7.5-12-7.5-20.5v-408c0-8.5 3-15.5 7.5-20.5z"/>
+          <path fill="#34A853" d="M336 190L257 269l79 79 104-60c18-10 18-28 0-38l-104-60z"/>
+          <path fill="#FBBC05" d="M32.5 44.5C36 40.5 42 38 49 42l287 148-79 79L32.5 44.5z"/>
+          <path fill="#EA4335" d="M32.5 493.5l224.5-224.5 79 79L49 496c-7 4-13 1.5-16.5-2.5z"/>
+        </svg>
+        <div class="btn-google-play-text">
+          <span class="sub">GET IT ON</span>
+          <span class="main">Google Play</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-left">
+        <strong>마이 카페 뮤직 (My Cafe Music)</strong>
+        <span>Developer: milemilesmile | Package: com.milemilesmile.mycafemuse</span>
+        <span>© 2026 My Cafe Music. All rights reserved.</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://play.google.com/store/apps/details?id=com.milemilesmile.mycafemuse" target="_blank">Google Play Store 바로가기 →</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
