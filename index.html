@@ -714,6 +714,43 @@
       margin-bottom: 6px;
     }
 
+    .modal-body h5 {
+      color: #ede5da;
+      font-size: 0.95rem;
+      margin: 16px 0 6px;
+      font-weight: 600;
+    }
+
+    .modal-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.88rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-body th, .modal-body td {
+      border: 1px solid var(--border-color);
+      padding: 10px 14px;
+      text-align: left;
+    }
+
+    .modal-body th {
+      background: rgba(229, 169, 59, 0.12);
+      color: var(--primary-gold);
+      font-weight: 600;
+    }
+
+    .modal-body .callout-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
     .modal-footer {
       padding: 16px 28px;
       border-top: 1px solid var(--border-color);
@@ -763,10 +800,13 @@
   </style>
 </head>
 <body>
-  <!-- 브라우저 이전 스크롤 복원 방지: 새로고침 및 첫 접속 시 항상 상단부터 표시 -->
+  <!-- 브라우저 이전 스크롤 복원 방지: 새로고침 및 첫 접속 시 항상 최상단부터 표시 -->
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
+    }
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
     }
     window.scrollTo(0, 0);
   </script>
@@ -1191,45 +1231,114 @@
         <button class="btn-modal-close" onclick="closeModal('privacyModal')">&times;</button>
       </div>
       <div class="modal-body">
-        <p><strong>공고일: 2026-05-18 | 시행일: 2026-05-18 | 문의: axlose2024@gmail.com</strong></p>
-        <p><code>My Cafe Music</code> 운영자(이하 "운영자")는 이용자의 개인정보와 관련 정보를 중요하게 생각하며, 관련 법령을 준수하기 위해 노력합니다. 본 방침은 앱 서비스 이용 과정에서 어떤 정보가 처리되는지, 어떤 목적으로 사용하는지, 어떻게 보관·파기하는지 설명하기 위한 문서입니다.</p>
+        <p style="margin-bottom: 20px;"><strong>지티이엔지</strong>(이하 "회사")는 <strong>My Cafe Music</strong> 이용자의 개인정보를 중요하게 생각하며, 「개인정보 보호법」 등 관련 법령을 준수하기 위해 최선을 다하고 있습니다. 본 방침은 앱 서비스 이용 과정에서 어떤 정보가 처리되는지, 어떤 목적으로 사용하는지 설명하기 위한 문서입니다.</p>
 
         <h4>1. 수집·처리하는 정보</h4>
-        <p>운영자는 회원가입 없는 앱 구조를 전제로 하며, 아래 정보는 서비스 이용 과정에서 처리될 수 있습니다.</p>
+        <p>본 서비스는 별도의 회원가입 없이 이용자의 Google 계정 연동 및 Google Play 결제 정보 기반으로 운영되며, 이용 과정에서 아래 정보가 처리될 수 있습니다.</p>
+
+        <h5>1) 앱 이용 및 기기 관련 정보</h5>
         <ul>
-          <li><strong>앱 이용 및 기기 관련 정보:</strong> OS 버전, 앱 버전, 기기 모델명, 언어 설정, 서비스 이용 기록(재생 상태, 접속 시점, 오류 기록, 앱 실행/이용 이벤트), 네트워크 및 서비스 상태 확인 정보</li>
-          <li><strong>구독 및 결제 관련 정보:</strong> Google Play 주문 정보, 구매 토큰(Purchase Token), 구독 활성 상태 및 복원 결과. <em>(운영자는 신용카드 번호, 계좌번호 등 결제 원천정보를 직접 저장하지 않으며 실제 결제는 Google Play 결제 시스템을 통해 처리됩니다)</em></li>
-          <li><strong>부정사용 방지 및 서비스 보호 정보:</strong> 기기 식별을 위한 해시값(device hash), 무료체험 기록, 전환 여부, 마지막 접속 시각, 동시재생 방지용 스트리밍 세션 정보, Firebase App Check / Play Integrity 검증 정보</li>
-          <li><strong>푸시 알림 관련 정보:</strong> FCM 푸시 토큰, 앱 버전명, 버전코드, 패키지명</li>
-          <li><strong>이용자 직접 입력 정보:</strong> 프로필 이름, 매장 이름, 고객 문의 시 제공한 이메일 주소 및 문의 내용</li>
-          <li><strong>AI 음성/클라우드 기능 관련 정보:</strong> 안내방송 문구 텍스트, 음성 생성 상태 로그</li>
+          <li><strong>기기 정보:</strong> OS 버전, 앱 버전, 기기 모델명, 언어 설정 등</li>
+          <li><strong>서비스 이용 기록:</strong> 재생 상태, 접속 시점, 오류 기록, 앱 실행/이용 이벤트</li>
+          <li><strong>네트워크 및 서비스 상태 확인 정보</strong></li>
+        </ul>
+
+        <h5>2) 구독 및 결제 관련 정보</h5>
+        <ul>
+          <li>Google Play 주문 정보 및 구매 토큰(Purchase Token)</li>
+          <li>구독 활성 상태 및 복원 결과</li>
+          <li>결제 보류, 해지 예정, 결제 문제와 관련된 상태 정보</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: #a89f91; margin-left: 6px;">※ 회사는 신용카드 번호, 계좌번호 등 원천 결제 정보를 저장하지 않습니다. 실제 결제는 Google Play 결제 시스템을 통해 처리됩니다.</p>
+
+        <h5>3) 부정사용 방지 및 서비스 보호 정보</h5>
+        <ul>
+          <li>기기 식별을 위한 해시값(device hash)</li>
+          <li>무료체험 기록, 전환 여부, 마지막 접속 시각</li>
+          <li>동시재생 방지용 스트리밍 세션 정보</li>
+          <li>앱 무결성 검증을 위한 Firebase App Check / Play Integrity 관련 정보</li>
+        </ul>
+
+        <h5>4) 푸시 알림 관련 정보</h5>
+        <ul>
+          <li>FCM 푸시 토큰, 앱 버전명, 패키지명</li>
+        </ul>
+
+        <h5>5) 이용자가 직접 입력하는 정보</h5>
+        <ul>
+          <li>프로필 이름, 상태 메시지, 프로필 이미지 URI, 매장 이름</li>
+          <li>고객 문의 시 제공한 이메일 주소 및 문의 내용</li>
+        </ul>
+
+        <h5>6) AI 음성/클라우드 기능 관련 정보</h5>
+        <ul>
+          <li>안내방송 문구 텍스트, Azure 음성 합성 사용량 관리 정보</li>
         </ul>
 
         <h4>2. 정보 처리 목적</h4>
         <ul>
-          <li>음악 재생, 매장별 설정, 안내방송 등 핵심 기능 제공</li>
+          <li>음악 스트리밍, 매장별 설정, 안내방송 등 핵심 기능 제공</li>
           <li>구독 상태 확인, 복원, 좌석(매장) 배정 관리</li>
           <li>무료체험 운영, 부정사용 방지, 동시재생 제한</li>
-          <li>오류 진단, 안정성 개선, 크래시 분석</li>
-          <li>고객 문의 대응, 분쟁 처리, 법령 준수 및 서비스 보호</li>
+          <li>오류 진단, 안정성 개선 및 고객 문의 대응</li>
         </ul>
 
         <h4>3. 제3자 제공 및 처리 위탁</h4>
-        <p>운영자는 원칙적으로 이용자의 정보를 임의로 판매하거나 불필요하게 제3자에게 제공하지 않습니다. 서비스 제공을 위해 아래 외부 서비스가 사용될 수 있습니다:</p>
-        <ul>
-          <li><strong>Google Play / Payments:</strong> 인앱 결제, 구독 관리, 환불 및 결제 상태 처리</li>
-          <li><strong>Google Firebase:</strong> 메시징(FCM), Crashlytics, Analytics, Firestore, App Check</li>
-          <li><strong>Microsoft Azure:</strong> AI 음성 합성 및 Blob Storage 스트리밍 리소스 제공</li>
-        </ul>
+        <div class="callout-box">
+          <p style="margin-bottom: 6px;"><strong>[Google Play / Google Payments]</strong> 인앱 결제, 구독 관리 및 환불 처리</p>
+          <p style="margin-bottom: 6px;"><strong>[Google Firebase]</strong> 메시징(FCM), Crashlytics, Analytics, App Check</p>
+          <p style="margin-bottom: 6px;"><strong>[Google Play Integrity]</strong> 앱 무결성 검증 및 변조 방지</p>
+          <p style="margin-bottom: 0;"><strong>[Microsoft Azure]</strong> AI 음성 합성 및 음악 스트리밍 서버</p>
+        </div>
 
         <h4>4. 보유 및 이용 기간</h4>
-        <p>처리 목적 달성 후 지체 없이 파기하는 것을 원칙으로 합니다. 다만 관련 법령에 따른 결제·거래 기록, 소비자 불만 및 분쟁 처리 기록은 법정 기간 동안 안전하게 보관 후 파기됩니다.</p>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 45%;">항목</th>
+              <th>보존 기간 및 법적 근거</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>결제 및 거래 관련 기록</td>
+              <td>전자상거래법에 따라 5년간 보관</td>
+            </tr>
+            <tr>
+              <td>소비자 불만 및 분쟁 처리 기록</td>
+              <td>전자상거래법에 따라 3년간 보관</td>
+            </tr>
+          </tbody>
+        </table>
 
         <h4>5. 이용자의 권리와 행사 방법</h4>
-        <p>이용자는 앱 내 매장 정보 직접 변경, 앱 삭제를 통한 기기 내 저장정보 제거, Google Play 구독 관리 화면을 통한 해지 및 결제 내역 확인이 가능하며, 추가 문의는 <strong>axlose2024@gmail.com</strong>으로 요청할 수 있습니다.</p>
+        <ul>
+          <li><strong>앱 내 직접 조정:</strong> 프로필/매장 정보 수정, 앱 데이터 삭제를 통한 로컬 정보 제거</li>
+          <li><strong>결제 및 구독 해지:</strong> Google Play 정기결제 관리 화면에서 직접 해지</li>
+          <li><strong>개인정보 문의:</strong> 이메일(<a href="mailto:axlose2024@gmail.com" style="color: var(--primary-amber);">axlose2024@gmail.com</a>)로 문의 및 삭제 요청</li>
+        </ul>
 
-        <h4>6. 문의처</h4>
-        <p>개인정보 관련 문의 및 의견: <strong>axlose2024@gmail.com</strong></p>
+        <h4>6. 쿠키(Cookie) 및 연령 제한</h4>
+        <ul>
+          <li><strong>쿠키 미사용:</strong> 본 앱은 웹 브라우저 쿠키(Cookie)를 사용하지 않습니다.</li>
+          <li><strong>연령 제한:</strong> 본 서비스는 만 14세 이상을 대상으로 하며, 만 14세 미만 아동은 법정대리인의 동의 없이 이용할 수 없습니다.</li>
+        </ul>
+
+        <h4>7. 개인정보 보호책임자 및 침해 상담</h4>
+        <p>• <strong>개인정보 보호책임자:</strong> 김경진 (대표) | 이메일: <a href="mailto:axlose2024@gmail.com" style="color: var(--primary-amber);">axlose2024@gmail.com</a></p>
+        <div class="callout-box" style="margin-top: 10px; font-size: 0.85rem; color: #a89f91;">
+          <p style="margin-bottom: 4px;">• 개인정보침해신고센터: privacy.kisa.or.kr / (국번없이) 118</p>
+          <p style="margin-bottom: 0;">• 경찰청 사이버수사국: ecrm.cyber.go.kr / (국번없이) 182</p>
+        </div>
+
+        <!-- 사업자 정보 최하단 푸터 고지 -->
+        <div style="margin-top: 36px; padding-top: 18px; border-top: 1px dashed var(--border-color); font-size: 0.82rem; color: #9c9182; line-height: 1.8;">
+          <p style="margin-bottom: 4px;"><strong>[사업자 정보 및 고지]</strong></p>
+          <p style="margin-bottom: 4px;">상호: 지티이엔지(G.T.eng) | 대표자: 김경진 | 사업자등록번호: 882-10-03000</p>
+          <p style="margin-bottom: 4px;">통신판매업 신고번호: 제 2026-성남분당A-0019 호 | 대표전화: 010- | 이메일: axlose2024@gmail.com</p>
+          <p style="margin-bottom: 8px;">주소: 경기도 성남시 분당구 동판교로 212 (삼평동, 봇들마을)</p>
+          <p style="margin-bottom: 0; color: #7a7063;">시행 일자: 2026년 5월 18일 | 최종 개정 일자: 2026년 9월 11일</p>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn-modal-ok" onclick="closeModal('privacyModal')">닫기</button>
@@ -1366,13 +1475,23 @@
     });
 
     // 접속 및 새로고침 시 항상 최상단부터 시작하도록 보장
-    if (window.location.hash) {
-      history.replaceState(null, null, window.location.pathname + window.location.search);
-      window.scrollTo(0, 0);
+    function resetToTop() {
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }
+
+    resetToTop();
+    window.addEventListener('DOMContentLoaded', resetToTop);
     window.addEventListener('load', function() {
-      window.scrollTo(0, 0);
+      resetToTop();
+      setTimeout(resetToTop, 50);
+      setTimeout(resetToTop, 200);
     });
+    window.addEventListener('pageshow', resetToTop);
 
     // 네비게이션 메뉴 클릭 시 URL 해시 변경 없이 부드럽게 스크롤
     document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(anchor) {
