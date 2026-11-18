@@ -28,6 +28,10 @@
       --font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -752,6 +756,13 @@
   </style>
 </head>
 <body>
+  <!-- 브라우저 이전 스크롤 복원 방지: 새로고침 및 첫 접속 시 항상 상단부터 표시 -->
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
 
   <!-- Navigation -->
   <header>
@@ -1268,6 +1279,42 @@
         });
       }
     });
+
+    // 접속 및 새로고침 시 항상 최상단부터 시작하도록 보장
+    if (window.location.hash) {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+      window.scrollTo(0, 0);
+    }
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+    });
+
+    // 네비게이션 메뉴 클릭 시 URL 해시 변경 없이 부드럽게 스크롤
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetId = this.getAttribute('href');
+        var targetElem = document.querySelector(targetId);
+        if (targetElem) {
+          var headerOffset = 76;
+          var elementPosition = targetElem.getBoundingClientRect().top;
+          var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // 로고 클릭 시 최상단으로 부드럽게 스크롤
+    var logo = document.querySelector('.logo');
+    if (logo) {
+      logo.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
   </script>
 
 </body>
